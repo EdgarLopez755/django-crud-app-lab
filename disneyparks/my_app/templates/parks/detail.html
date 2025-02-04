@@ -20,4 +20,32 @@
     </div>
   </div>
 </section>
+<!-- Existing cat-container above -->
+<div class="rides-container">
+  <section class="rides">
+    <div class="subsection-title">
+      <h2>Rides</h2>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          
+          <th>Date</th>
+          <th>Rating</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for ride in park.ride_set.all %}
+          <tr>
+            
+            <td>{{ride.date}}</td>
+            <td>{{ride.get_rating_display}}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </section>
+</div>
+
 {% endblock %}
+

@@ -32,6 +32,7 @@ class Park(models.Model):
 
 
 class Ride(models.Model):
+    
     date = models.DateField()
     rating = models.CharField(
         max_length=1,
