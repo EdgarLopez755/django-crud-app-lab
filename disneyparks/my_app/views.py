@@ -4,6 +4,7 @@ from django.shortcuts import render
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 from .models import Park
+from .forms import RideForm
 from django.http import HttpResponse
 
 # Define the home view function
@@ -22,7 +23,8 @@ def park_index(request):
 
 def park_detail(request, park_id):
     park = Park.objects.get(id=park_id)
-    return render(request, 'parks/detail.html', {'park': park})
+    ride_form = RideForm()
+    return render(request, 'parks/detail.html', {'park': park, 'ride_form': ride_form})
 
 
 
