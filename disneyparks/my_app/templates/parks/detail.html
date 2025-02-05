@@ -26,6 +26,12 @@
     <div class="subsection-title">
       <h2>Rides</h2>
     </div>
+    <h3>Add a Ride</h3>
+    <form method="post" class="subsection-content" autocomplete="off">
+      {% csrf_token %}
+      {{ ride_form.as_p }}
+      <button type="'submit" class="btn submit">Add Ride</button>
+    </form>
     <table>
       <thead>
         <tr>
