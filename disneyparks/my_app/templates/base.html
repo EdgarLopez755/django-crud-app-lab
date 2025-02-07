@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -14,14 +15,28 @@
     <header>
       <div class="header-logo-container">
         <a href="/">
-          <!-- <img src="" alt="The Cat Collector Logo" /> -->
+          
         </a>
       </div>
       <nav>
         <ul>
-        <li><a href="/about">About</a></li>
-        <li><a href="/parks">Parks</a></li>
-        <li><a href="{% url 'park-create' %}">Add a Park</a></li>
+          {% if user.is_authenticated %}
+            <li><a href="{% url 'park-index' %}">All Parks</a></li>
+            <li><a href="{% url 'park-create' %}">Add a Park</a></li>
+            <li><a href="{% url 'ride-index' %}">All Rides</a></li>
+            <li><a href="{% url 'ride-create' %}">Add a Ride</a></li>
+            <li><a href="{% url 'about' %}">About</a></li>
+            <li>
+              <form id="logout-form" method="post" action="{% url 'logout' %}">
+                {% csrf_token %}
+                <button type="submit">Log out</button>
+              </form>
+            </li>
+          {% else %}
+            <li><a href="{% url 'about' %}">About</a></li>
+            <li><a href="{% url 'home' %}">Login</a></li>
+            <li><a href="{% url 'signup' %}">Sign Up</a></li>
+          {% endif %}
         </ul>
       </nav>
     </header>

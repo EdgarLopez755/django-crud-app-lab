@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/rides/ride-index.css' %}" />
+{% endblock %}
+{% block content %}
+
+<section class="page-header">
+  <h1>All Rides</h1>
+  
+</section>
+
+<section class="card-container">
+  {% for ride in ride_list %}
+    <!-- <div class="card" style="border-color: {{ ride.rating }};">  {# Correct syntax here #} -->
+      <!-- <div class="card-bg" style="background-color: {{ ride.rating }};"> {# And here #} -->
+      </div>
+      <a href="{% url 'ride-detail' ride.id %}">
+        <div class="card-content">
+          <h2>{{ ride.name }}</h2>
+          <p>A {{ ride.rating }} ride</p>
+        </div>
+      </a>
+    </div>
+  {% endfor %}
+</section>
+
+{% endblock %}
